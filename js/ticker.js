@@ -3,8 +3,8 @@ let views = {
     'ptycoin' : { name : 'PTYcoin', market : 'instant', markup : 0.02 },
     'panda' : { name : 'Panda Exchange', market : 'market', markup : 0 }
 }
-let view = 'ptycoin'
-let altview = 'panda'
+let view = 'panda'
+let altview = 'ptycoin'
 
 let fiat = { ticker: 'USD', min: 10, max: 3000 }
 let currencies = [
