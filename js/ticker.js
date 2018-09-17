@@ -1,6 +1,11 @@
 // Initial Variables
-let market = 'instant'
-let markup = 0.02
+let views = { 
+    'ptycoin' : { name : 'PTYcoin', market : 'instant', markup : 0.02 },
+    'panda' : { name : 'Panda Exchange', market : 'market', markup : 0 }
+}
+let view = 'ptycoin'
+let altview = 'panda'
+
 let fiat = { ticker: 'USD', min: 10, max: 3000 }
 let currencies = [
     { ticker: 'BTC', text: 'Bitcoin Core' },
@@ -24,7 +29,7 @@ table.append(tbody)
 table.append(tfoot)
 
 // Table Header
-thead.append('<tr><th>Moneda</th><th>Unidad</th><th>Compramos (tasa / max.)</th><th>Vendemos (tasa / max.)</th></tr>')
+thead.append('<tr><th>Moneda</th><th>Unidad</th><th>Bid (tasa / max.)</th><th>Ask (tasa / max.)</th></tr>')
 
 // Table Rows
 for (var i = 0; i < currencies.length; i++) {
@@ -37,14 +42,18 @@ for (var i = 0; i < currencies.length; i++) {
 }
 
 // Table Footer
-tfoot.append('<tr><td id="ticker_updated" colspan="4">Última actualización: ' + Date() + '</td></tr>')
+tfoot.append(
+    '<tr>' + 
+    '<td id="ticker_updated" colspan="2">Última actualización: ' + Date() + '</td>' +
+    '<td colspan="2" class="text-right"><button id="view_button" type="button" class="btn btn-primary btn-sm" onclick="updateView()"></button></td>' +
+    '</tr>')
 
 // Update The Table
-updateTable()
 setInterval(function () {
     updateTable()
 }, 60 * 1000)
 
+updateView()
 
 function updateTable () {
     currencies.forEach(function (currency) {
@@ -109,4 +118,16 @@ function updateTicker (from, to, liquidity, id) {
             }
         }
     })
+}
+
+function updateView () {
+    let currentView = view
+    view = altview
+    altview = currentView
+
+    market = views[view].market
+    markup = views[view].markup
+    $('#view_button').text('Muestra precios de ' + views[altview].name)
+
+    updateTable()
 }
