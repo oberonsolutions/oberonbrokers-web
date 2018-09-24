@@ -6,7 +6,7 @@ let views = {
 let view = 'panda'
 let altview = 'ptycoin'
 
-let fiat = { ticker: 'USD', min: 10, max: 3000 }
+let fiat = { ticker: 'USD', min: 10, max: 500 }
 let currencies = [
     { ticker: 'BTC', text: 'Bitcoin Core' },
     { ticker: 'BCH', text: 'Bitcoin Cash' },
@@ -29,15 +29,16 @@ table.append(tbody)
 table.append(tfoot)
 
 // Table Header
-thead.append('<tr><th>Moneda</th><th>Unidad</th><th>Bid (tasa / max.)</th><th>Ask (tasa / max.)</th></tr>')
+// thead.append('<tr><th>Moneda</th><th>Unidad</th><th>Bid (tasa / max.)</th><th>Ask (tasa / max.)</th></tr>')
+thead.append('<tr><th>Moneda</th><th>Unidad</th><th class="text-right">Bid</th><th class="text-right">Ask</th></tr>')
 
 // Table Rows
 for (var i = 0; i < currencies.length; i++) {
     let row = $('<tr>')
     $('<td>' + currencies[i].text + '</td>').appendTo(row)
     $('<td>1 ' + currencies[i].ticker + '</td>').appendTo(row)
-    $('<td><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + fiat.ticker + currencies[i].ticker + '_bid' }).appendTo(row)
-    $('<td><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + fiat.ticker + currencies[i].ticker + '_ask' }).appendTo(row)
+    $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + fiat.ticker + currencies[i].ticker + '_bid' }).appendTo(row)
+    $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + fiat.ticker + currencies[i].ticker + '_ask' }).appendTo(row)
     tbody.append(row)
 }
 
@@ -98,7 +99,8 @@ function updateTicker (from, to, liquidity, id) {
         
         if ((from === fiat.ticker && liquidity >= fiat.min) || (from !== fiat.ticker && (data.rate.amount * liquidity >= fiat.min))) {
             let prev = $(id).text()
-            let next = price.toFixed(2) + ' / ' + liquidity + ' ' + from
+            // let next = price.toFixed(2) + ' / ' + liquidity + ' ' + from
+            let next = price.toFixed(2) + ' ' + fiat.ticker
 
             if (next != prev) {
                 $(id).fadeOut('1000', function () {
