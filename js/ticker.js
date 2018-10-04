@@ -1,12 +1,11 @@
 // Initial Variables
 let views = { 
-    'ptycoin' : { name : 'PTYcoin', market : 'instant', markup : 0.02 },
-    'panda' : { name : 'Panda Exchange', market : 'market', markup : 0 }
+    'ptycoin' : { name : 'PTYcoin', fiat : 'USD', liquidity : '10000', markup : 0.02 },
+    'panda' : { name : 'Panda Exchange', fiat : 'USD', liquidity : 300, markup : 0 }
 }
 let view = 'panda'
 let altview = 'ptycoin'
 
-let fiat = { ticker: 'USD', min: 10, max: 500 }
 let currencies = [
     { ticker: 'BTC', text: 'Bitcoin Core' },
     { ticker: 'BCH', text: 'Bitcoin Cash' },
@@ -37,8 +36,8 @@ for (var i = 0; i < currencies.length; i++) {
     let row = $('<tr>')
     $('<td>' + currencies[i].text + '</td>').appendTo(row)
     $('<td>1 ' + currencies[i].ticker + '</td>').appendTo(row)
-    $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + fiat.ticker + currencies[i].ticker + '_bid' }).appendTo(row)
-    $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + fiat.ticker + currencies[i].ticker + '_ask' }).appendTo(row)
+    $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + views[view].fiat + currencies[i].ticker + '_bid' }).appendTo(row)
+    $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + views[view].fiat + currencies[i].ticker + '_ask' }).appendTo(row)
     tbody.append(row)
 }
 
@@ -59,13 +58,21 @@ updateView()
 function updateTable () {
     currencies.forEach(function (currency) {
         // Ask
-        discoverLiquidity(fiat.ticker, currency.ticker, function (liquidity) {
-            updateTicker (fiat.ticker, currency.ticker, liquidity, '#ticker_' + fiat.ticker + currency.ticker + '_ask')
+        discoverMarket(views[view].fiat, currency.ticker, views[view].liquidity, function (market) {
+            discoverLiquidity(views[view].fiat, currency.ticker, market, views[view].liquidity, function (marketLiquidity) {
+                updateTicker (views[view].fiat, currency.ticker, market, marketLiquidity, '#ticker_' + views[view].fiat + currency.ticker + '_ask')
+            })
         })
 
         // Bid
-        discoverLiquidity(currency.ticker, fiat.ticker, function (liquidity) {
-            updateTicker (currency.ticker, fiat.ticker, liquidity, '#ticker_' + fiat.ticker + currency.ticker + '_bid')
+        discoverPrice (currency.ticker, views[view].fiat, function (price) {
+            let liquidity = views[view].liquidity / price
+            discoverMarket(currency.ticker, views[view].fiat, liquidity, function (market) {
+                discoverLiquidity(currency.ticker, views[view].fiat, market, liquidity, function (marketLiquidity) {
+                    updateTicker (currency.ticker, views[view].fiat, market, marketLiquidity, '#ticker_' + views[view].fiat + currency.ticker + '_bid')
+                })
+            })
+    
         })
 
         let event = new Date()
@@ -73,34 +80,54 @@ function updateTable () {
     })
 }
 
-function discoverLiquidity (from, to, callback) {
-    let liquidity = fiat.max
-    let url = 'https://api.panda.exchange/orders/' + from + '/until/' + to + '/type/' + market + '/price/' + liquidity + '/'
+function discoverPrice (from, to, callback) {
+    let url = 'https://api.panda.exchange/orders/' + from + '/until/' + to + '/type/instant/price/'
+
+    $.get(url, function (data) {
+        callback(data.rate.amount)
+    })
+}
+
+function discoverMarket (from, to, liquidity, callback) {
+    let url = 'https://api.panda.exchange/orders/' + from + '/until/' + to + '/type/market/price/' + liquidity + '/'
 
     $.get(url, function (data) {
         if (typeof data.available === 'undefined') {
-            callback(liquidity)
+            callback('market')
         } else {
-            callback(data.available.amount)
+            callback('instant')
         }
     })
 }
 
-function updateTicker (from, to, liquidity, id) {
+function discoverLiquidity (from, to, market, liquidity, callback) {
+    let url = 'https://api.panda.exchange/orders/' + from + '/until/' + to + '/type/' + market + '/price/' + liquidity + '/'
+
+    $.get(url, function (data) {
+        if (typeof data.available !== 'undefined') {
+            callback(data.available.amount)
+        } else {
+
+            callback(liquidity)
+        }
+    })
+}
+
+function updateTicker (from, to, market, liquidity, id) {
     let url = 'https://api.panda.exchange/orders/' + from + '/until/' + to + '/type/' + market + '/price/' + liquidity + '/'
 
     $.get(url, function (data) {
         let price = 0
-        if (from === fiat.ticker) {
-            price = data.rate.amount * (1 + markup)
+        if (from === views[view].fiat) {
+            price = data.rate.amount * (1 + views[view].markup)
         } else {
-            price = data.rate.amount * (1 - markup)
+            price = data.rate.amount * (1 - views[view].markup)
         }
         
-        if ((from === fiat.ticker && liquidity >= fiat.min) || (from !== fiat.ticker && (data.rate.amount * liquidity >= fiat.min))) {
+        if ((from === views[view].fiat && liquidity > 0) || (from !== views[view].fiat && (data.rate.amount * liquidity > 0))) {
             let prev = $(id).text()
             // let next = price.toFixed(2) + ' / ' + liquidity + ' ' + from
-            let next = price.toFixed(2) + ' ' + fiat.ticker
+            let next = price.toFixed(2) + ' ' + views[view].fiat
 
             if (next != prev) {
                 $(id).fadeOut('1000', function () {
@@ -127,8 +154,6 @@ function updateView () {
     view = altview
     altview = currentView
 
-    market = views[view].market
-    markup = views[view].markup
     $('#view_button').text('Muestra precios de ' + views[altview].name)
 
     updateTable()
