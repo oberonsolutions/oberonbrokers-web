@@ -1,6 +1,6 @@
 // Initial Variables
 let views = { 
-    'ptycoin' : { name : 'PTYcoin', fiat : 'USD', liquidity : '10000', markup : 0.035 },
+    'ptycoin' : { name : 'PTYcoin', fiat : 'USD', liquidity : 3000, markup : 0.035 },
     'panda' : { name : 'Panda Exchange', fiat : 'USD', liquidity : 300, markup : 0 }
 }
 let view = 'panda'
