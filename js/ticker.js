@@ -8,7 +8,7 @@ let altview = 'ptycoin'
 
 let currencies = [
     { ticker: 'BTC', text: 'Bitcoin Core' },
-    { ticker: 'BCH', text: 'Bitcoin Cash' },
+    { ticker: 'BCH', text: 'Bitcoin Cash - En Mantenimiento' },
     { ticker: 'DASH', text: 'Dash' },
     { ticker: 'ETH', text: 'Ethereum' },
     { ticker: 'LTC', text: 'Litecoin' },
