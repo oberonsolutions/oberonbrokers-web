@@ -9,9 +9,9 @@ let altview = 'ptycoin'
 let currencies = [
     { ticker: 'BTC', text: 'Bitcoin Core' },
     { ticker: 'BCH', text: 'Bitcoin Cash' },
+    { ticker: 'DASH', text: 'Dash' },
     { ticker: 'ETH', text: 'Ethereum' },
     { ticker: 'LTC', text: 'Litecoin' },
-    { ticker: 'TUSD', text: 'TrueUSD' },
     { ticker: 'XRP', text: 'Ripple'},
     { ticker: 'ZEC', text: 'ZCash' }
 ]
@@ -34,7 +34,7 @@ thead.append('<tr><th>Moneda</th><th>Unidad</th><th class="text-right">Bid</th><
 // Table Rows
 for (var i = 0; i < currencies.length; i++) {
     let row = $('<tr>')
-    $('<td>' + currencies[i].text + '</td>').appendTo(row)
+    $('<td><img style="height: 2em;" src="img/tokens/' + currencies[i].ticker + '.png"/> ' + currencies[i].text + '</td>').appendTo(row)
     $('<td>1 ' + currencies[i].ticker + '</td>').appendTo(row)
     $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + views[view].fiat + currencies[i].ticker + '_bid' }).appendTo(row)
     $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + views[view].fiat + currencies[i].ticker + '_ask' }).appendTo(row)
@@ -128,6 +128,7 @@ function updateTicker (from, to, market, liquidity, id) {
             let prev = $(id).text()
             // let next = price.toFixed(2) + ' / ' + liquidity + ' ' + from
             let next = price.toFixed(2) + ' ' + views[view].fiat
+            next = (parseInt(price) == 0) ? next = '-' : next
 
             if (next != prev) {
                 $(id).fadeOut('1000', function () {
