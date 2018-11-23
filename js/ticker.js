@@ -12,6 +12,7 @@ let currencies = [
     { ticker: 'DASH', text: 'Dash' },
     { ticker: 'ETH', text: 'Ethereum' },
     { ticker: 'LTC', text: 'Litecoin' },
+    { ticker: 'USDT', text: 'TetherUSD', bid: 0.92, ask: 1.02, views: [ 'ptycoin' ] },
     { ticker: 'XRP', text: 'Ripple'},
     { ticker: 'ZEC', text: 'ZCash' }
 ]
@@ -58,23 +59,38 @@ updateView()
 function updateTable () {
     currencies.forEach(function (currency) {
         // Ask
-        discoverMarket(views[view].fiat, currency.ticker, views[view].liquidity, function (market) {
-            discoverLiquidity(views[view].fiat, currency.ticker, market, views[view].liquidity, function (marketLiquidity) {
-                updateTicker (views[view].fiat, currency.ticker, market, marketLiquidity, '#ticker_' + views[view].fiat + currency.ticker + '_ask')
-            })
-        })
+        if (typeof currency.views === 'undefined' || currency.views.indexOf(view) >= 0) {
+            if (typeof currency.ask === 'number') {
+                $('#ticker_' + views[view].fiat + currency.ticker + '_ask').text(currency.ask + ' ' + views[view].fiat)
+            } else {
+                discoverMarket(views[view].fiat, currency.ticker, views[view].liquidity, function (market) {
+                    discoverLiquidity(views[view].fiat, currency.ticker, market, views[view].liquidity, function (marketLiquidity) {
+                        updateTicker (views[view].fiat, currency.ticker, market, marketLiquidity, '#ticker_' + views[view].fiat + currency.ticker + '_ask')
+                    })
+                })
+            }
+        } else {
+            $('#ticker_' + views[view].fiat + currency.ticker + '_ask').text('-')
+        }  
 
         // Bid
-        discoverPrice (currency.ticker, views[view].fiat, function (price) {
-            let liquidity = views[view].liquidity / price
-            discoverMarket(currency.ticker, views[view].fiat, liquidity, function (market) {
-                discoverLiquidity(currency.ticker, views[view].fiat, market, liquidity, function (marketLiquidity) {
-                    updateTicker (currency.ticker, views[view].fiat, market, marketLiquidity, '#ticker_' + views[view].fiat + currency.ticker + '_bid')
+        if (typeof currency.views === 'undefined' || currency.views.indexOf(view) >= 0) {
+            if (typeof currency.bid === 'number') {
+                $('#ticker_' + views[view].fiat + currency.ticker + '_bid').text(currency.bid + ' ' + views[view].fiat)
+            } else {
+                discoverPrice (currency.ticker, views[view].fiat, function (price) {
+                    let liquidity = views[view].liquidity / price
+                    discoverMarket(currency.ticker, views[view].fiat, liquidity, function (market) {
+                        discoverLiquidity(currency.ticker, views[view].fiat, market, liquidity, function (marketLiquidity) {
+                            updateTicker (currency.ticker, views[view].fiat, market, marketLiquidity, '#ticker_' + views[view].fiat + currency.ticker + '_bid')
+                        })
+                    })
                 })
-            })
-    
-        })
-
+            }
+        } else {
+            $('#ticker_' + views[view].fiat + currency.ticker + '_bid').text('-')
+        }
+        
         let event = new Date()
         $('#ticker_updated').text('Última actualización: ' + event.toLocaleString())
     })
@@ -118,17 +134,19 @@ function updateTicker (from, to, market, liquidity, id) {
 
     $.get(url, function (data) {
         let price = 0
-        if (from === views[view].fiat) {
-            price = data.rate.amount * (1 + views[view].markup)
-        } else {
-            price = data.rate.amount * (1 - views[view].markup)
+        if (!data.market_maintenance) {
+            if (from === views[view].fiat) {
+                price = data.rate.amount * (1 + views[view].markup)
+            } else {
+                price = data.rate.amount * (1 - views[view].markup)
+            }
         }
         
         if ((from === views[view].fiat && liquidity > 0) || (from !== views[view].fiat && (data.rate.amount * liquidity > 0))) {
             let prev = $(id).text()
             // let next = price.toFixed(2) + ' / ' + liquidity + ' ' + from
             let next = price.toFixed(2) + ' ' + views[view].fiat
-            next = (parseInt(price) == 0) ? next = '-' : next
+            next = (parseFloat(price) == 0) ? next = '-' : next
 
             if (next != prev) {
                 $(id).fadeOut('1000', function () {
