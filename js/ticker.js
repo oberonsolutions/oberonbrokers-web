@@ -12,7 +12,7 @@ let currencies = [
     { ticker: 'DASH', text: 'Dash' },
     { ticker: 'ETH', text: 'Ethereum' },
     { ticker: 'LTC', text: 'Litecoin' },
-    { ticker: 'USDT', text: 'TetherUSD', bid: 0.92, ask: 1.02, views: [ 'ptycoin' ] },
+    { ticker: 'USDT', text: 'TetherUSD', bid: 0.94, ask: 1.04, views: [ 'ptycoin' ] },
     { ticker: 'XRP', text: 'Ripple'},
     { ticker: 'ZEC', text: 'ZCash' }
 ]
