@@ -1,5 +1,5 @@
 // Initial Variables
-let markup = 0.05
+let markup = 0.07
 let offset = -0.02
 let fiat = 'PAB'
 
@@ -70,9 +70,9 @@ function updateTicker (currency) {
         if (typeof data.data === 'undefined') {
             console.log('No data for ' + currency.coincapId)
         } else {
-            let price = parseFloat(data.data.priceUsd) * (1 + offset)
-            let bid = price * (1 - markup)
-                ask = price * (1 + markup)
+            let price = parseFloat(data.data.priceUsd)
+            let bid = price * (1 + offset - markup)
+                ask = price * (1 + offset + markup)
     
             updateEntry(currency.ticker, 'bid', bid)
             updateEntry(currency.ticker, 'ask', ask)  
