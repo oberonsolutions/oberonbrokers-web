@@ -1,6 +1,6 @@
 // Initial Variables
 let markup = 0.07
-let offset = -0.01
+let offset = -0.03
 let fiat = 'PAB'
 
 let currencies = [
@@ -12,6 +12,7 @@ let currencies = [
     { ticker: 'ETH', text: 'Ethereum', coincapId: 'ethereum' },
     { ticker: 'LTC', text: 'Litecoin', coincapId: 'litecoin' },
     { ticker: 'USDT', text: 'TetherUSD', coincapId: 'tether' },
+    { ticker: 'WAVES', text: 'Waves', coincapId: 'waves' },
     { ticker: 'XRP', text: 'Ripple', coincapId: 'ripple'},
     { ticker: 'ZEC', text: 'ZCash', coincapId: 'zcash' }
 ]
