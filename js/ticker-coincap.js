@@ -1,6 +1,6 @@
 // Initial Variables
-let markup = 0.07
-let offset = -0.03
+let markup = 0.05
+let offset = 0
 let fiat = 'PAB'
 
 let currencies = [
@@ -11,6 +11,7 @@ let currencies = [
     { ticker: 'DASH', text: 'Dash', coincapId: 'dash' },
     { ticker: 'ETH', text: 'Ethereum', coincapId: 'ethereum' },
     { ticker: 'LTC', text: 'Litecoin', coincapId: 'litecoin' },
+    { ticker: 'OPAB', text: 'Oberon Cash PAB', bid : 1, ask : 1 },
     { ticker: 'USDT', text: 'TetherUSD', coincapId: 'tether' },
     { ticker: 'WAVES', text: 'Waves', coincapId: 'waves' },
     { ticker: 'XRP', text: 'Ripple', coincapId: 'ripple'},
@@ -65,20 +66,25 @@ function updateTable () {
 }
 
 function updateTicker (currency) {
-    let url = 'https://api.coincap.io/v2/assets/' + currency.coincapId
+    if (typeof currency.coincapId !== 'undefined') {
+        let url = 'https://api.coincap.io/v2/assets/' + currency.coincapId
 
-    $.get(url, function (data) {
-        if (typeof data.data === 'undefined') {
-            console.log('No data for ' + currency.coincapId)
-        } else {
-            let price = parseFloat(data.data.priceUsd)
-            let bid = price * (1 + offset - markup)
-                ask = price * (1 + offset + markup)
-    
-            updateEntry(currency.ticker, 'bid', bid)
-            updateEntry(currency.ticker, 'ask', ask)  
-        }
-    })
+        $.get(url, function (data) {
+            if (typeof data.data === 'undefined') {
+                console.log('No data for ' + currency.coincapId)
+            } else {
+                let price = parseFloat(data.data.priceUsd)
+                let bid = price * (1 + offset - markup)
+                    ask = price * (1 + offset + markup)
+        
+                updateEntry(currency.ticker, 'bid', bid)
+                updateEntry(currency.ticker, 'ask', ask)  
+            }
+        }) 
+    } else {
+        updateEntry(currency.ticker, 'bid', currency.bid)
+        updateEntry(currency.ticker, 'ask', currency.ask)
+    }
 }
 
 function updateEntry (ticker, side, price) {

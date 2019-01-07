@@ -6,6 +6,10 @@ h1 {
   color: navy;
 }
 
+.alert {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 .card {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
