@@ -36,7 +36,7 @@ thead.append('<tr><th>Moneda</th><th>Unidad</th><th class="text-right">Bid (' + 
 // Table Rows
 for (var i = 0; i < currencies.length; i++) {
     let row = $('<tr>')
-    $('<td><img style="height: 2em;" src="img/tokens/' + currencies[i].ticker + '.png"/> ' + currencies[i].text + '</td>').appendTo(row)
+    $('<td><img style="height: 2em;" src="img/tokens/' + currencies[i].ticker + '.png" alt="' + currencies[i].text + '"/> ' + currencies[i].text + '</td>').appendTo(row)
     $('<td>1 ' + currencies[i].ticker + '</td>').appendTo(row)
     $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + currencies[i].ticker + '_bid' }).appendTo(row)
     $('<td class="text-right"><i class="fas fa-spinner"></i></td>').attr({ id: 'ticker_' + currencies[i].ticker + '_ask' }).appendTo(row)
