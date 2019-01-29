@@ -1,6 +1,6 @@
 // Initial Variables
 let markup = 0.05
-let offset = 0
+let offset = -0.02
 let fiat = 'PAB'
 
 let currencies = [
