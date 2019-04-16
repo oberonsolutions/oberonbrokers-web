@@ -6,7 +6,6 @@ let fiat = 'PAB'
 let currencies = [
     { ticker: 'BTC', text: 'Bitcoin Core', coincapId: 'bitcoin' },
     { ticker: 'BCH', text: 'Bitcoin Cash', coincapId: 'bitcoin-cash' },
-    { ticker: 'BSV', text: 'Bitcoin SV', coincapId: 'bitcoin-sv' },
     { ticker: 'DAI', text: 'Dai Stablecoin v1.0', coincapId: 'dai' },
     { ticker: 'DASH', text: 'Dash', coincapId: 'dash' },
     { ticker: 'ETH', text: 'Ethereum', coincapId: 'ethereum' },
