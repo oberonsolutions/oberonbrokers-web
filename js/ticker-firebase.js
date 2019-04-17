@@ -10,7 +10,7 @@ let currencies = [
     { ticker: 'ETH', text: 'Ethereum' },
     { ticker: 'LTC', text: 'Litecoin' },
     { ticker: 'OPAB', text: 'Oberon Cash PAB' },
-    { ticker: 'USDT', text: 'TetherUSD' },
+    { ticker: 'USDT', text: 'TetherUSD (Tarifa minera $1.00)' },
     { ticker: 'WAVES', text: 'Waves' },
     { ticker: 'XRP', text: 'Ripple'},
     { ticker: 'ZEC', text: 'ZCash' }
