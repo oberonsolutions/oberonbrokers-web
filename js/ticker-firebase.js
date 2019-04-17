@@ -2,7 +2,7 @@
 let fiat = 'PAB'
 
 let currencies = [
-    { ticker: 'BTC', text: 'Bitcoin Core' },
+    { ticker: 'BTC', text: 'Bitcoin Core (Tarifa minera $1.00)' },
     { ticker: 'BCH', text: 'Bitcoin Cash' },
     { ticker: 'BTG', text: 'Bitcoin Gold' },
     { ticker: 'DAI', text: 'Dai Stablecoin v1.0' },
