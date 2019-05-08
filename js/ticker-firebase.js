@@ -20,6 +20,14 @@ let currencies = [
 
 let currencies = [
     { ticker: 'BTC', text: 'Bitcoin Core (Tarifa minera $1.00)' },
+    { ticker: 'BCH', text: 'Bitcoin Cash' },
+    { ticker: 'DAI', text: 'Dai Stablecoin v1.0' },
+    { ticker: 'DASH', text: 'Dash' },
+    { ticker: 'ETH', text: 'Ethereum' },
+    { ticker: 'LTC', text: 'Litecoin' },
+    { ticker: 'OPAB', text: 'Oberon Cash PAB' },
+    { ticker: 'XRP', text: 'Ripple'},
+    { ticker: 'ZEC', text: 'ZCash' }
 ]
 
  // Build Table
