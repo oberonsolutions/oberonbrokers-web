@@ -1,6 +1,7 @@
 // Initial Variables
 let fiat = 'PAB'
 
+/*
 let currencies = [
     { ticker: 'BTC', text: 'Bitcoin Core (Tarifa minera $1.00)' },
     { ticker: 'BCH', text: 'Bitcoin Cash' },
@@ -15,8 +16,13 @@ let currencies = [
     { ticker: 'XRP', text: 'Ripple'},
     { ticker: 'ZEC', text: 'ZCash' }
 ]
+ */
 
-// Build Table
+let currencies = [
+    { ticker: 'BTC', text: 'Bitcoin Core (Tarifa minera $1.00)' },
+]
+
+ // Build Table
 let div = $("div#ticker")
 let table = $('<table>').addClass('ticker').addClass('table').addClass('table-striped')
 let thead = $('<thead>')
