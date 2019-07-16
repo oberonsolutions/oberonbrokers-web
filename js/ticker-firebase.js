@@ -19,7 +19,7 @@ let currencies = [
  */
 
 let currencies = [
-    { ticker: 'BTC', text: 'Bitcoin Core (Tarifa minera $2.50)' },
+    { ticker: 'BTC', text: 'Bitcoin Core (Tarifa minera $1.00)' },
     { ticker: 'BCH', text: 'Bitcoin Cash' },
     { ticker: 'DAI', text: 'Dai Stablecoin v1.0' },
     { ticker: 'DASH', text: 'Dash' },
