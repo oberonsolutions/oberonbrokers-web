@@ -46,8 +46,8 @@ db.collection('markets').doc(fiat).collection('coins')
             content += '<tr>'
             content += '<td><img style="height: 2em;" src="img/tokens/' + data.symbol + '.png" alt="' + data.name + '"/> ' + data.name + '</td>'
             content += '<td>1 ' + data.symbol + '</td>'
-            content += '<td class="text-right">' + data.bid.toFixed(2) + '</td>'
-            content += '<td class="text-right">' + data.ask.toFixed(2) + '</td>'
+            content += '<td class="text-right">' + data.bid + '</td>'
+            content += '<td class="text-right">' + data.ask + '</td>'
             content += '</tr>'
         })
         tbody.html(content)
