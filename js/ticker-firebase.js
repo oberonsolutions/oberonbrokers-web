@@ -1,17 +1,19 @@
 // Connect to the Database
-const firebaseConfig = {
-    apiKey: "AIzaSyCH6bvbyWoMZY-R3UqC4V9VIlwYz7DrFwk",
-    authDomain: "ptycoin.firebaseapp.com",
-    databaseURL: "https://ptycoin.firebaseio.com",
-    projectId: "ptycoin",
-    storageBucket: "ptycoin.appspot.com",
-    messagingSenderId: "426302239289"
-}
+var firebaseConfig = {
+    apiKey: "AIzaSyBv9_zEvC-01wZuCwM4o_Hl9bkytZEBenk",
+    authDomain: "oberon-broker.firebaseapp.com",
+    databaseURL: "https://oberon-broker-default-rtdb.firebaseio.com",
+    projectId: "oberon-broker",
+    storageBucket: "oberon-broker.appspot.com",
+    messagingSenderId: "1048626319215",
+    appId: "1:1048626319215:web:433ad7430913228953a29a",
+    measurementId: "G-0LXMDQSMHQ"
+  };
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore()
+const db = firebase.database();
 
 // Initial Variables
-let fiat = 'PAB'
+let market = 'panama';
 
  // Build Table
 let div = $("div#ticker")
@@ -25,8 +27,7 @@ table.append(tbody)
 table.append(tfoot)
 
 // Table Header
-// thead.append('<tr><th>Moneda</th><th>Unidad</th><th>Bid (tasa / max.)</th><th>Ask (tasa / max.)</th></tr>')
-thead.append('<tr><th>Moneda</th><th>Unidad</th><th class="text-right">Bid (' + fiat + ')</th><th class="text-right">Ask (' + fiat + ')</th></tr>')
+thead.append('<tr><th>Moneda</th><th>Unidad</th><th>Moneda</th><th class="text-right">Bid</th><th class="text-right">Ask</th></tr>')
 
 // Table Footer
 tfoot.append(
@@ -36,22 +37,42 @@ tfoot.append(
 
 // Table Body
 let ticker = []
-db.collection('markets').doc(fiat).collection('coins')
-    .onSnapshot(querySnapshot => {
-        let content = ''
-        querySnapshot.forEach(doc => {
-            let data = doc.data()
-            console.log(data.name)
-            // Table Rows
-            content += '<tr>'
-            content += '<td><img style="height: 2em;" src="img/tokens/' + data.symbol + '.png" alt="' + data.name + '"/> ' + data.name + '</td>'
-            content += '<td>1 ' + data.symbol + '</td>'
-            content += '<td class="text-right">' + data.bid + '</td>'
-            content += '<td class="text-right">' + data.ask + '</td>'
-            content += '</tr>'
-        })
-        tbody.html(content)
+db.ref('markets/' + market).on('value', (snapshot) => {
+    
+    let content = ''
+    snapshot.forEach((coin) => {
+        let symbol = coin.key;
+        let data = coin.val();
         
-        let event = new Date()
-        $('#ticker_updated').text('Última actualización: ' + event.toLocaleString())
+        console.log(symbol);
+        // Table Rows
+        content += '<tr>'
+        content += '<td><img style="height: 2em;" src="img/tokens/' + symbol + '.png" alt="' + data.name + '"/> ' + data.name + '</td>'
+        content += '<td>1 ' + symbol + '</td>'
+
+        content += '<td>'
+        for (price of Object.keys(data.prices)) {
+            let key = price;
+            content += key + '<br/>'
+        }
+        content += '</td>'
+        content += '<td class="text-right">'
+        for (price of Object.keys(data.prices)) {
+            let key = price;
+            content += data.prices[key].bid + '<br/>'
+        }
+        content += '</td>'
+        content += '<td class="text-right">'
+        for (price of Object.keys(data.prices)) {
+            let key = price;
+            content += data.prices[key].ask + '<br/>'
+        }
+        content += '</td>'
+        content += '</tr>'
+    });
+    tbody.html(content)
+    
+    let event = new Date()
+    $('#ticker_updated').text('Última actualización: ' + event.toLocaleString())
+
 })
