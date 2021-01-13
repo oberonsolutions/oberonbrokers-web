@@ -37,7 +37,7 @@ tfoot.append(
 
 // Table Body
 let ticker = []
-db.ref('markets/' + market).on('value', (snapshot) => {
+db.ref('markets/' + market).orderByChild('rank').on('value', (snapshot) => {
     
     let content = ''
     snapshot.forEach((coin) => {
