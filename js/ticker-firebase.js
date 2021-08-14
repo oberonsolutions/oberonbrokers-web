@@ -1,14 +1,14 @@
 // Connect to the Database
 var firebaseConfig = {
-    apiKey: "AIzaSyBv9_zEvC-01wZuCwM4o_Hl9bkytZEBenk",
-    authDomain: "oberon-broker.firebaseapp.com",
-    databaseURL: "https://oberon-broker-default-rtdb.firebaseio.com",
-    projectId: "oberon-broker",
-    storageBucket: "oberon-broker.appspot.com",
-    messagingSenderId: "1048626319215",
-    appId: "1:1048626319215:web:433ad7430913228953a29a",
-    measurementId: "G-0LXMDQSMHQ"
-  };
+    apiKey: "AIzaSyAU2V-lF-YdzHGnGtATIX1c1ORnoDMk7q4",
+    authDomain: "oberonbrokers-a404b.firebaseapp.com",
+    databaseURL: "https://oberonbrokers-a404b-default-rtdb.firebaseio.com",
+    projectId: "oberonbrokers-a404b",
+    storageBucket: "oberonbrokers-a404b.appspot.com",
+    messagingSenderId: "149254453015",
+    appId: "1:149254453015:web:a9e9179ca7be39d1d32952",
+    measurementId: "G-72XS709Z0T"
+};
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
@@ -37,7 +37,7 @@ tfoot.append(
 
 // Table Body
 let ticker = []
-db.ref('markets/' + market).orderByChild('rank').on('value', (snapshot) => {
+db.ref('ticker/markets/' + market).orderByChild('rank').on('value', (snapshot) => {
     
     let content = ''
     snapshot.forEach((coin) => {
