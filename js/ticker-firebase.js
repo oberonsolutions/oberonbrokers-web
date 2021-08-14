@@ -37,13 +37,13 @@ tfoot.append(
 
 // Table Body
 let ticker = []
-db.ref('ticker/markets/' + market).orderByChild('rank').on('value', (snapshot) => {
+db.ref('ticker/' + market).orderByChild('rank').on('value', (snapshot) => {
     
     let content = ''
     snapshot.forEach((coin) => {
-        let symbol = coin.key;
         let data = coin.val();
-        
+        let symbol = data.symbol;
+       
         console.log(symbol);
         // Table Rows
         content += '<tr>'
