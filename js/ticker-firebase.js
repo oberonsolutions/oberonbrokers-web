@@ -47,7 +47,7 @@ db.ref('ticker/' + market).orderByChild('rank').on('value', (snapshot) => {
         console.log(symbol);
         // Table Rows
         content += '<tr>'
-        content += '<td><img style="height: 2em;" src="img/tokens/' + symbol + '.png" alt="' + data.name + '"/> ' + data.name + '</td>'
+        content += '<td><img style="height: 2em;" src="' + data.icon + '" alt="' + data.name + '"/> ' + data.name + '</td>'
         content += '<td>1 ' + symbol + '</td>'
 
         content += '<td>'
