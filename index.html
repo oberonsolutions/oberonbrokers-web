@@ -72,9 +72,7 @@
           clientes con perfiles clonados o falsificados. Hemos tomado la decisión de NO UTILIZAR TELEGRAM para ninguna
           transacción. Es muy fácil crear cuentas falsas. Comuníquese <em> solo por teléfono o WhatsApp </em> para
           coordinar compras o ventas.</div>
-        <div class="card">
-          <div id="ticker"></div>
-        </div>
+        <div id="ticker"></div>
 
         <div id="section2" class="container text-center">
           <p class="lead">Conozca nuestros otros servicios:</p>
@@ -141,7 +139,22 @@
     crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
-  <script src="js/ticker-firebase.js?v=2021091001"></script>
+  <script src="https://oberonbrokers-a404b.web.app/js/ticker.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAU2V-lF-YdzHGnGtATIX1c1ORnoDMk7q4",
+      authDomain: "oberonbrokers-a404b.firebaseapp.com",
+      databaseURL: "https://oberonbrokers-a404b-default-rtdb.firebaseio.com",
+      projectId: "oberonbrokers-a404b",
+      storageBucket: "oberonbrokers-a404b.appspot.com",
+      messagingSenderId: "149254453015",
+      appId: "1:149254453015:web:a9e9179ca7be39d1d32952",
+      measurementId: "G-72XS709Z0T"
+    };
+    const market = "panama";
+    const language = "es";
+    tickerStart(firebaseConfig, market, language);
+  </script>
 </body>
 
 </html>
