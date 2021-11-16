@@ -30,8 +30,9 @@ h1 {
   background-color: white;
   border-radius: 0.25rem;
   padding: 1rem;
+  margin-bottom: 1rem;
 }
 
-#faq h5 {
-  color: navy;
+#faq h6 {
+  color: #1F354A;
 }
