@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "oberonbrokers-web",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}

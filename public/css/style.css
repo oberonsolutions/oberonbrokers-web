@@ -1,0 +1,34 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #1f354a;
+}
+
+main {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+section::before {
+  content: "";
+  display: block;
+  padding-top: 60px;
+  margin-top: -60px;
+}
+
+.container {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+h1 {
+  color: navy;
+}
+
+footer {
+  margin: 0px;
+  padding: 1em;
+}
