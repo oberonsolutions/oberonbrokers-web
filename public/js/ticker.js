@@ -59,15 +59,15 @@ const tickerStart = (market, language) => {
 
   // Table Header
   thead.append(
-    "<tr><th>" +
+    '<tr><th><span class="d-none d-md-inline">' +
       strings[language].coin +
-      "</th>" +
+      '</span></th>' +
       '<th class="d-none d-md-table-cell">' +
       strings[language].unit +
       "</th>" +
-      '<th class="d-none d-md-table-cell">' +
+      '<th><span class="d-none d-md-inline">' +
       strings[language].currency +
-      "</th>" +
+      "</span></th>" +
       '<th class="text-right">' +
       strings[language].bid +
       "</th>" +
@@ -101,7 +101,7 @@ const tickerStart = (market, language) => {
       content += '<td><img style="height: 2em;" src="' + row.icon + '" alt="' + row.name + '"/><span class="d-none d-md-inline"> ' + row.name + "</span></td>";
       content += '<td class="d-none d-md-table-cell text-nowrap">1 ' + row.symbol + "</td>";
 
-      content += '<td class="d-none d-md-table-cell">';
+      content += '<td>';
       for (price of Object.keys(row.prices)) {
         let key = price;
         content += key + "<br/>";
