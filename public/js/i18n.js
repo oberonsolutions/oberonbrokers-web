@@ -1,5 +1,5 @@
-let country = { id: "panama", name: "Panama", flag: "pa" };
-let language = "en";
+let country;
+let language;
 
 const detectCountry = () => {
   const hash = window.location.hash;
