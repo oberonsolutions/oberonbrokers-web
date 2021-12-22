@@ -27,7 +27,7 @@ const firebaseConfig = {
   storageBucket: "oberonbrokers-a404b.appspot.com",
   messagingSenderId: "149254453015",
   appId: "1:149254453015:web:9043f13c040fc3e5d32952",
-  measurementId: "G-R1PJQYBM5Q"
+  measurementId: "G-R1PJQYBM5Q",
 };
 
 // Connect to Database
@@ -35,14 +35,14 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 const tickerStart = (market, language) => {
-  language = (typeof strings[language] !== "undefined") ? language : "es";
+  language = typeof strings[language] !== "undefined" ? language : "es";
   let last = 0;
 
   let div = $("div#ticker");
   div.empty();
 
   // Build Warning
-  let warn = $("<div>").addClass("alert").addClass("alert-warning").text(strings[language].outdated).hide();
+  let warn = $("<div>").addClass("alert").addClass("alert-warning").addClass("small").text(strings[language].outdated).hide();
   div.append(warn);
 
   // Build Table
@@ -62,10 +62,10 @@ const tickerStart = (market, language) => {
     "<tr><th>" +
       strings[language].coin +
       "</th>" +
-      "<th>" +
+      '<th class="d-none d-md-table-cell">' +
       strings[language].unit +
       "</th>" +
-      "<th>" +
+      '<th class="d-none d-md-table-cell">' +
       strings[language].currency +
       "</th>" +
       '<th class="text-right">' +
@@ -98,22 +98,22 @@ const tickerStart = (market, language) => {
     rows.forEach((row) => {
       // Table Rows
       content += "<tr>";
-      content += '<td><img style="height: 2em;" src="' + row.icon + '" alt="' + row.name + '"/> ' + row.name + "</td>";
-      content += "<td>1 " + row.symbol + "</td>";
+      content += '<td><img style="height: 2em;" src="' + row.icon + '" alt="' + row.name + '"/><span class="d-none d-md-inline"> ' + row.name + "</span></td>";
+      content += '<td class="d-none d-md-table-cell text-nowrap">1 ' + row.symbol + "</td>";
 
-      content += "<td>";
+      content += '<td class="d-none d-md-table-cell">';
       for (price of Object.keys(row.prices)) {
         let key = price;
         content += key + "<br/>";
       }
       content += "</td>";
-      content += '<td class="text-right">';
+      content += '<td class="text-nowrap text-right">';
       for (price of Object.keys(row.prices)) {
         let key = price;
         content += row.prices[key].bid + "<br/>";
       }
       content += "</td>";
-      content += '<td class="text-right">';
+      content += '<td class="text-nowrap text-right">';
       for (price of Object.keys(row.prices)) {
         let key = price;
         content += row.prices[key].ask + "<br/>";
