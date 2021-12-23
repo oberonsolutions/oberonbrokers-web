@@ -7,6 +7,13 @@
   import FAQ from "./FAQ.svelte";
   import Services from "./Services.svelte";
   import Footer from "./Footer.svelte";
+
+  import { firebaseConfig } from "./firebaseConfig";
+  import { initializeApp } from "firebase/app";
+  import { getAnalytics } from "firebase/analytics";
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
 
 <Styles />
