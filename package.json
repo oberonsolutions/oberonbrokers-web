@@ -1,0 +1,32 @@
+{
+  "name": "oberonbrokers-web",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oberonsolutions/oberonbrokers-web.git"
+  },
+  "devDependencies": {
+    "@popperjs/core": "^2.11.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "bootstrap": "^5.1.3",
+    "firebase": "^9.6.1",
+    "jquery": "^3.6.0",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.45.1",
+    "svelte": "^3.44.3",
+    "svelte-flagpack": "git+https://github.com/Yummygum/svelte-flagpack.git#7-fix-broken-svelte-build",
+    "svelte-preprocess": "^4.10.1",
+    "sveltestrap": "^5.6.3",
+    "typescript": "^4.5.4"
+  }
+}
