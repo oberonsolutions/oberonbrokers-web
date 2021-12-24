@@ -7,7 +7,7 @@
   import { getDatabase, ref, onValue } from "firebase/database";
   import { Container, Alert, Table } from "sveltestrap";
 
-  let market = "panama";
+  let market = "costa-rica";
   let data = {};
   let last = 0;
   let ticker = [];
