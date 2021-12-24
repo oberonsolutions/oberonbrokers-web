@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "oberonbrokers-web",
+    "site": "ptycoin-web",
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
