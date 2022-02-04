@@ -8,13 +8,46 @@
   import Services from "./Services.svelte";
   import Footer from "./Footer.svelte";
 
+  import { getCountryByID, getCountryByISO } from "./countries";
+  import { country, language } from "./stores";
+  import { get } from "axios";
+
   import { firebaseConfig } from "./firebaseConfig";
   import { initializeApp } from "firebase/app";
   import { getAnalytics } from "firebase/analytics";
 
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+
+  const setCountry = () => {
+    // First Check to See if Country is Defined by URL
+    switch (window.location.hash) {
+      case "#/panama":
+      case "#/costa-rica":
+      case "#/colombia":
+        country.set(getCountryByID(window.location.hash.substring(2)));
+        return;
+        break;
+    }
+
+    // If the country isn't stored locally, detect it
+    if ($country === null) {
+      get("https://ipinfo.io/?token=db70a6f604714a").then((response) => {
+        const geo = response.data;
+        country.set(getCountryByISO(geo.country));
+      });
+    }
+  };
+
+  const setLanguage = () => {
+    language.set("es");
+  };
+
+  setLanguage();
+  setCountry();
 </script>
+
+<svelte:window on:hashchange={setCountry} />
 
 <Styles />
 

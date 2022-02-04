@@ -46,8 +46,10 @@
   };
 
   country.subscribe((value) => {
-    market = value;
-    refreshTicker();
+    if (value !== null) {
+      market = value.id;
+      refreshTicker();
+    }
   });
 
   language.subscribe((value) => {
