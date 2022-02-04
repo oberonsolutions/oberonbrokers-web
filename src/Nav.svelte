@@ -18,9 +18,11 @@
 
   let isOpen = false;
   let flag = "pa";
+  let countryDisplay = "Panamá"
 
   country.subscribe((value) => {
     flag = countries[value].flag;
+    countryDisplay = countries[value].name;
   });
 
   const handleHashChange = () => {
@@ -72,12 +74,17 @@
       <NavItem>
         <NavLink href="#/services">Servicios</NavLink>
       </NavItem>
-      <Dropdown nav inNavbar>
-        <DropdownToggle nav caret><span class="flag-icon flag-icon-{flag}" /></DropdownToggle>
-        <DropdownMenu end>
+    </Nav>
+    <Nav navbar class="ms-auto">
+      <Dropdown>
+        <DropdownToggle nav caret>
+          <span class="flag-icon flag-icon-{flag}" />
+          {countryDisplay}
+        </DropdownToggle>
+        <DropdownMenu>
           <DropdownItem on:click={() => handleCountryUpdate("panama")}>
             <span class="flag-icon flag-icon-pa" />
-            Panama
+            Panamá
           </DropdownItem>
           <DropdownItem on:click={() => handleCountryUpdate("costa-rica")}>
             <span class="flag-icon flag-icon-cr" />
