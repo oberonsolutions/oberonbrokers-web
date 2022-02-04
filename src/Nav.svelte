@@ -1,7 +1,7 @@
 <script>
-  import { get } from "axios";
-  import { countries } from "./countries";
-  import { country, language } from "./stores";
+  import { country } from "./stores";
+  import { getCountryByID } from "./countries";
+
   import { onMount } from "svelte";
   import {
     Collapse,
@@ -18,63 +18,21 @@
   } from "sveltestrap";
 
   let isOpen = false;
-  let flag = "pa";
-  let countryDisplay = "Panamá";
+  let navCountry = getCountryByID("default");
 
   country.subscribe((value) => {
-    flag = countries[value].flag;
-    countryDisplay = countries[value].name;
+    if (value !== null) {
+      navCountry = value;
+    }
   });
 
-  const fetchCountry = () => {
-    get("https://ipinfo.io/?token=db70a6f604714a").then(
-      (response) => {
-        const geo = response.data;
-        console.log("Detected " + geo.country);
-        switch (geo.country) {
-          case "PA":
-            country.set("panama");
-            break;
-          case "CR":
-            country.set("costa-rica");
-            break;
-          case "CO":
-            country.set("colombia");
-            break;
-          default:
-            country.set("costa-rica");
-        }
-      }
-    );
-  };
-
-  const handleHashChange = () => {
-    switch (window.location.hash) {
-      case "#/panama":
-      case "#/costa-rica":
-      case "#/colombia":
-        country.set(window.location.hash.substring(2));
-        return true;
-        break;
-    }
-    return false;
-  };
-
   const handleCountryUpdate = (value) => {
-    country.set(value);
-    window.location.hash = "#/" + value;
+    country.set(getCountryByID(value));
   };
 
   const handleUpdate = (event) => {
     isOpen = event.detail.isOpen;
   };
-
-  onMount(() => {
-    const geoSpecified = handleHashChange();
-    if (!geoSpecified) {
-      fetchCountry();
-    }
-  });
 </script>
 
 <svelte:head>
@@ -86,7 +44,6 @@
     referrerpolicy="no-referrer"
   />
 </svelte:head>
-<svelte:window on:hashchange={handleHashChange} />
 
 <Navbar color="light" light expand="md" class="fixed-top">
   <NavbarBrand href="#/">
@@ -106,8 +63,8 @@
     <Nav navbar class="ms-auto">
       <Dropdown>
         <DropdownToggle nav caret>
-          <span class="flag-icon flag-icon-{flag}" />
-          {countryDisplay}
+          <span class="flag-icon flag-icon-{navCountry.iso.toLocaleLowerCase()}" />
+          {navCountry.name}
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem on:click={() => handleCountryUpdate("panama")}>
