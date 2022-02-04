@@ -1,19 +1,34 @@
 const countries = {
+  default: {
+    id: "panama",
+    name: "Panamá",
+    iso: "PA"
+  },
   panama: {
     id: "panama",
     name: "Panamá",
-    flag: "pa",
+    iso: "PA",
   },
   "costa-rica": {
     id: "costa-rica",
     name: "Costa Rica",
-    flag: "cr",
+    iso: "CR",
   },
   colombia: {
     id: "colombia",
     name: "Colombia",
-    flag: "co",
+    iso: "CO",
   },
 };
 
-export { countries };
+const getCountryByID = (id) => {
+  const country = countries[id];
+  return country !== undefined ? country : countries["default"];
+}
+
+const getCountryByISO = (iso) => {
+  const country = Object.values(countries).find(e => e.flag === iso.toLowerCase())
+  return country !== undefined ? country : countries["default"];
+}
+
+export { getCountryByID, getCountryByISO };
