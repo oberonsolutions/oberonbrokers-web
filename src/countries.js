@@ -27,7 +27,7 @@ const getCountryByID = (id) => {
 }
 
 const getCountryByISO = (iso) => {
-  const country = Object.values(countries).find(e => e.flag === iso.toLowerCase())
+  const country = Object.values(countries).find(e => e.iso === iso);
   return country !== undefined ? country : countries["default"];
 }
 
