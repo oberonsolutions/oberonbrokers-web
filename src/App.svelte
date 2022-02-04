@@ -47,8 +47,6 @@
   setCountry();
 </script>
 
-<svelte:window on:hashchange={setCountry} />
-
 <Styles />
 
 <Nav />
