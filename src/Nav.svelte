@@ -42,7 +42,7 @@
             country.set("colombia");
             break;
           default:
-            country.set("panama");
+            country.set("costa-rica");
         }
       }
     );
