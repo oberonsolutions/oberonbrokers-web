@@ -1,7 +1,7 @@
 const countries = {
   panama: {
     id: "panama",
-    name: "Panama",
+    name: "Panamá",
     flag: "pa",
   },
   "costa-rica": {
