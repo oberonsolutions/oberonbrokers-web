@@ -47,8 +47,8 @@
 
 <Navbar color="light" light expand="md" class="fixed-top">
   <NavbarBrand href="#/">
-    <img src="img/ptycoin-72x72.png" alt="" width="24" height="24" class="d-inline-block align-text-top" />
-    TICO Exchange
+    <img src="img/brokers-72x72.webp" alt="" width="24" height="24" class="d-inline-block align-text-top" />
+    Oberon Brokers
   </NavbarBrand>
   <NavbarToggler on:click={() => (isOpen = !isOpen)} />
   <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>

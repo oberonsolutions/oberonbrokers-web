@@ -114,7 +114,7 @@
       </p>
       <h6>Aclaramos que</h6>
       <p>
-        Nuestra marca, TICO Exchange, no está afiliada ni asociada con ninguna empresa, entidad o persona. El servicio
+        Nuestra marca, Oberon Brokers, no está afiliada ni asociada con ninguna empresa, entidad o persona. El servicio
         de corredor es independiente de cualquier sistema de inversión o plataforma multinivel, piramidal o ponzi. Por
         este motivo, la transacción que se realiza es "Peer-to-Peer" (P2P). Cada persona es responsable de lo que hace
         con sus billeteras y tokens de criptomonedas.

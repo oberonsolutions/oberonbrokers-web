@@ -3,7 +3,7 @@
 </script>
 
 <Alert color="warning" class="mb-1 mb-md-3 small">
-  TICO Exchange no está afiliado a ningún plan de inversión ni a ninguna organización multinivel. No ofrecemos ningún
+  Oberon Brokers no está afiliado a ningún plan de inversión ni a ninguna organización multinivel. No ofrecemos ningún
   consejo de inversión ni garantizamos ningún retorno de las inversiones en criptomonedas.
 </Alert>
 <Alert color="warning" class="mb-1 mb-md-3 small">

@@ -24,18 +24,17 @@
     |
     <span class="text-nowrap">
       <i class="far fa-envelope-open" />
-      <a href="mailto:info@tico.exchange">info@tico.exchange</a>
+      <a href="mailto:info@oberonbrokers.com">info@oberonbrokers.com</a>
     </span>
   </Container>
 {:else}
   <div class="card">
     <img
       class="card-img-top bg-light"
-      src="img/ticologo.jpg"
-      alt="TICO Exchange"
+      src="img/oberonbrokerslogo.jpg"
+      alt="Oberon Brokers"
     />
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">TICO Exchange, Marca de Oberon Brokers</li>
       <li class="list-group-item">Brokers de Criptomonedas</li>
       <li class="list-group-item">Lunes - Viernes 9am - 6pm</li>
       <li class="list-group-item">
@@ -54,7 +53,7 @@
         </span><br />
         <span class="text-nowrap">
           <i class="far fa-envelope-open" />
-          <a href="mailto:info@tico.exchange">info@tico.exchange</a>
+          <a href="mailto:info@oberonbrokers.com">info@oberonbrokers.com</a>
         </span>
       </li>
     </ul>

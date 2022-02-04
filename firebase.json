@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "tico-web",
+    "site": "oberonbrokers-web",
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
