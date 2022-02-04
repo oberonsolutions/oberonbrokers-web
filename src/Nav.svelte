@@ -1,4 +1,5 @@
 <script>
+  import { get } from "axios";
   import { countries } from "./countries";
   import { country, language } from "./stores";
   import { onMount } from "svelte";
@@ -18,12 +19,34 @@
 
   let isOpen = false;
   let flag = "pa";
-  let countryDisplay = "Panamá"
+  let countryDisplay = "Panamá";
 
   country.subscribe((value) => {
     flag = countries[value].flag;
     countryDisplay = countries[value].name;
   });
+
+  const fetchCountry = () => {
+    get("https://ipinfo.io/?token=db70a6f604714a").then(
+      (response) => {
+        const geo = response.data;
+        console.log("Detected " + geo.country);
+        switch (geo.country) {
+          case "PA":
+            country.set("panama");
+            break;
+          case "CR":
+            country.set("costa-rica");
+            break;
+          case "CO":
+            country.set("colombia");
+            break;
+          default:
+            country.set("panama");
+        }
+      }
+    );
+  };
 
   const handleHashChange = () => {
     switch (window.location.hash) {
@@ -31,8 +54,10 @@
       case "#/costa-rica":
       case "#/colombia":
         country.set(window.location.hash.substring(2));
+        return true;
         break;
     }
+    return false;
   };
 
   const handleCountryUpdate = (value) => {
@@ -45,7 +70,10 @@
   };
 
   onMount(() => {
-    handleHashChange();
+    const geoSpecified = handleHashChange();
+    if (!geoSpecified) {
+      fetchCountry();
+    }
   });
 </script>
 
