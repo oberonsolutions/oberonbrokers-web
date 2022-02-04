@@ -1,8 +1,8 @@
 const countries = {
   default: {
-    id: "panama",
-    name: "Panamá",
-    iso: "PA"
+    id: "costa-rica",
+    name: "Costa Rica",
+    iso: "CR",
   },
   panama: {
     id: "panama",
