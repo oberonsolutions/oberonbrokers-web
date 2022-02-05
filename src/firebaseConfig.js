@@ -6,8 +6,8 @@ const firebaseConfig = {
   projectId: "oberonbrokers-a404b",
   storageBucket: "oberonbrokers-a404b.appspot.com",
   messagingSenderId: "149254453015",
-  appId: "1:149254453015:web:9043f13c040fc3e5d32952",
-  measurementId: "G-R1PJQYBM5Q"
+  appId: "1:149254453015:web:8cfcf450168f0f04d32952",
+  measurementId: "G-8R8VPMPKMF"
 };
 
 export { firebaseConfig };
