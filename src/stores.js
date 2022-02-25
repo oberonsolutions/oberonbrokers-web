@@ -13,3 +13,10 @@ export const language = writable(storedLanguage);
 language.subscribe((value) => {
   localStorage.setItem("language", JSON.stringify(value));
 });
+
+// Alerts
+const storedAlerts = JSON.parse(localStorage.getItem("alerts"));
+export const alerts = writable(storedAlerts);
+alerts.subscribe((value) => {
+  localStorage.setItem("alerts", JSON.stringify(value));
+});
