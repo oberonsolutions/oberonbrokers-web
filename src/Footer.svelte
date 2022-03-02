@@ -1,12 +1,3 @@
-<svelte:head>
-  <link
-    rel="stylesheet"
-    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-    crossorigin="anonymous"
-  />
-</svelte:head>
-
 <footer class="bg-light text-center small pt-3">
   <p>
     <i class="far fa-envelope-open" />

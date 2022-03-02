@@ -47,6 +47,10 @@
   setCountry();
 </script>
 
+<svelte:head>
+  <script src="https://kit.fontawesome.com/fc408cac96.js" crossorigin="anonymous"></script>
+</svelte:head>
+
 <Styles />
 
 <Nav />

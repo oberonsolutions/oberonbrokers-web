@@ -53,6 +53,13 @@
           <i class="far fa-envelope-open" />
           <a href="mailto:info@ptycoin.com">info@ptycoin.com</a>
         </span>
+        <br />
+        <span class="text-nowrap">
+          <big>
+            <a href="https://fb.com/ptycoin"><i class="fa-brands fa-facebook" /></a>
+            <a href="https://www.instagram.com/ptycoin"><i class="fa-brands fa-instagram" /></a>
+          </big>
+        </span>
       </li>
     </ul>
   </div>

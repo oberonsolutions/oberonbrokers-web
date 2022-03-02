@@ -8,15 +8,6 @@
   });
 </script>
 
-<svelte:head>
-  <link
-    rel="stylesheet"
-    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-    crossorigin="anonymous"
-  />
-</svelte:head>
-
 {#if lang == "es"}
   <Container fluid class="p-0 my-3">
     <p class="lead text-center text-light">Conozca nuestros otros servicios:</p>
