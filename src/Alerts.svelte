@@ -20,5 +20,5 @@
   seguridad. No somos responsables de las compras de criptomonedas que se envían a una billetera de terceros.
 </Alert>
 <Alert color="primary" dismissible class="mb-1 mb-md-3 small" isOpen={$alerts.indexOf("hjdpsaiawr") < 0} toggle={() => handleCancelAlert("hjdpsaiawr")}>
-  ¡Ahora puede cambiar Bitcoin usando Lightning Network sin tarifas de minería! Pregúntele a su broker cómo configurar y usar una billetera Lightning Network.
+  ¡PTYcoin se complace en anunciar que hemos abierto nuestras puertas en Colombia! Pregúntele a su corredor cómo comprar o vender criptomonedas en Medellín.
 </Alert>
