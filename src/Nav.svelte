@@ -1,7 +1,6 @@
 <script>
   import { country } from "./stores";
   import { getCountryByID } from "./countries";
-
   import { onMount } from "svelte";
   import {
     Collapse,
@@ -58,6 +57,12 @@
       </NavItem>
       <NavItem>
         <NavLink href="#/services">Servicios</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink
+          href="https://docs.google.com/document/d/e/2PACX-1vSEm9UjTAAmg91eHDsutYq2HHd_ymHWskOObU9zPsHTwfrwq6ccB_QqSvFG5ByNtiuUWqBify_VSGl4/pub"
+          target="_blank">Alertas de Estafa</NavLink
+        >
       </NavItem>
     </Nav>
     <Nav navbar class="ms-auto">
