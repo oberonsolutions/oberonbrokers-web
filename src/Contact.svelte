@@ -33,9 +33,6 @@
         <span class="flag-icon flag-icon-cr" />
         Heredia, Costa Rica
         <br />
-        <span class="flag-icon flag-icon-co" />
-        Medellín, Colombia
-        <br />
       </li>
       <li class="list-group-item">Lunes - Viernes 10am - 6pm</li>
       <li class="list-group-item">

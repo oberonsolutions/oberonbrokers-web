@@ -80,10 +80,6 @@
             <span class="flag-icon flag-icon-cr" />
             Costa Rica
           </DropdownItem>
-          <DropdownItem on:click={() => handleCountryUpdate("colombia")}>
-            <span class="flag-icon flag-icon-co" />
-            Colombia
-          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </Nav>

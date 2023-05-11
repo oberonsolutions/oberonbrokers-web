@@ -13,12 +13,7 @@ const countries = {
     id: "costa-rica",
     name: "Costa Rica",
     iso: "CR",
-  },
-  colombia: {
-    id: "colombia",
-    name: "Colombia",
-    iso: "CO",
-  },
+  }
 };
 
 const getCountryByID = (id) => {
