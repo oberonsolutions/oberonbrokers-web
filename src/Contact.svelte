@@ -30,9 +30,6 @@
         <span class="flag-icon flag-icon-pa" />
         Panamá, Republica de Panamá
         <br />
-        <span class="flag-icon flag-icon-cr" />
-        Heredia, Costa Rica
-        <br />
       </li>
       <li class="list-group-item">Lunes - Viernes 10am - 6pm</li>
       <li class="list-group-item">
@@ -41,10 +38,6 @@
           <a href="https://api.whatsapp.com/send?phone=50765709999">+507 6570-9999</a>
         </span>
         <br />
-        <span class="text-nowrap">
-          <i class="fab fa-whatsapp" />
-          <a href="https://api.whatsapp.com/send?phone=50663776531">+506 6377-6531</a>
-        </span>
         <br />
         <span class="text-nowrap">
           <i class="far fa-envelope-open" />

@@ -70,10 +70,6 @@
             <span class="flag-icon flag-icon-pa" />
             Panamá
           </DropdownItem>
-          <DropdownItem on:click={() => handleCountryUpdate("costa-rica")}>
-            <span class="flag-icon flag-icon-cr" />
-            Costa Rica
-          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </Nav>
