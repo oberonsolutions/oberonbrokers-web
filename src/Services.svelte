@@ -27,14 +27,14 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-lg-4">
         <div class="card my-1">
-          <img class="card-img-top bg-light" src="img/museoopen.png" alt="Museo Open"/>
+          <img class="card-img-top bg-light" src="img/stoika_web.png" alt="Stoika"/>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Diseño Grafico</li>
             <li class="list-group-item">Redes Sociales</li>
           </ul>
           <div class="card-body">
             <i class="far fa-envelope" />
-            <a href="mailto:info@museoopen.com" class="card-link">Más información</a>
+            <a href="mailto:info@ptycoin.com" class="card-link">info@ptycoin.com</a>
           </div>
         </div>
       </div>
