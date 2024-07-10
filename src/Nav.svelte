@@ -55,9 +55,11 @@
       <NavItem>
         <NavLink href="#/faq">FAQ</NavLink>
       </NavItem>
+      <!--
       <NavItem>
         <NavLink href="#/services">Servicios</NavLink>
       </NavItem>
+      -->
     </Nav>
     <Nav navbar class="ms-auto">
       <Dropdown>

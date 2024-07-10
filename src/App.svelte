@@ -69,9 +69,11 @@
         <section id="/faq">
           <FAQ />
         </section>
+        <!--
         <section id="/services">
           <Services />
         </section>
+        -->
       </Col>
     </Row>
   </Container>

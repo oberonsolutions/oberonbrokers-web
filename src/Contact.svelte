@@ -38,7 +38,6 @@
           <a href="https://api.whatsapp.com/send?phone=50765709999">+507 6570-9999</a>
         </span>
         <br />
-        <br />
         <span class="text-nowrap">
           <i class="far fa-envelope-open" />
           <a href="mailto:info@ptycoin.com">info@ptycoin.com</a>
