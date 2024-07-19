@@ -53,7 +53,6 @@
   <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
     <Nav navbar>
       <NavItem>
-        <NavLink href="#/faq">FAQ</NavLink>
       </NavItem>
       <!--
       <NavItem>

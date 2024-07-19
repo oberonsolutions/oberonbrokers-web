@@ -2,10 +2,11 @@
   import { Styles, Row, Col, Container } from "sveltestrap";
   import Nav from "./Nav.svelte";
   import Contact from "./Contact.svelte";
-  import Alerts from "./Alerts.svelte";
-  import Ticker from "./Ticker.svelte";
-  import FAQ from "./FAQ.svelte";
-  import Services from "./Services.svelte";
+  import Farewell from "./Farewell.svelte";
+  //import Alerts from "./Alerts.svelte";
+  //import Ticker from "./Ticker.svelte";
+  //import FAQ from "./FAQ.svelte";
+  //import Services from "./Services.svelte";
   import Footer from "./Footer.svelte";
 
   import { getCountryByID, getCountryByISO } from "./countries";
@@ -63,17 +64,8 @@
       <Col xs="12" md="9">
         <section id="/">
           <Contact small />
-          <Alerts />
-          <Ticker />
+          <Farewell />
         </section>
-        <section id="/faq">
-          <FAQ />
-        </section>
-        <!--
-        <section id="/services">
-          <Services />
-        </section>
-        -->
       </Col>
     </Row>
   </Container>
